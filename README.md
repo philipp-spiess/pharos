@@ -20,3 +20,7 @@ For [Gamboo](http://gamboo.at "Gamboo") we use a local mysql-database which stor
     npm install mysql
 
 **Pharos** needs to be public on port 1337 (this is where socket.io runs on) and can be private on port 7331, this is the port where the API runs on.
+
+## Usage ##
+
+Check out the demo directory for a little preview on how to use **Pharos**.

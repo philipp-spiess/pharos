@@ -1,13 +1,20 @@
+/**
+ * Pharos Push & Tracking Engine
+ * @package Pharos
+ * @author Philipp Spieß <philipp.spiess@myxcode.at>
+ */
+
 var io = require('socket.io').listen(1337);
 io.enable('browser client minification');
-//io.set('resource', '');
+io.set('resource', '/pharos');
 
 var mysql = require('mysql');
-var gamboo = {};
-var http = require('http');
-var qs = require('querystring');
+var http  = require('http');
+var qs    = require('querystring');
 
-
+/**
+ * DB Connect
+ */
 var db = mysql.createClient({
   user: 'root',
   host: 'localhost',
@@ -20,9 +27,7 @@ db.query('USE gamboo');
 // ###################### PUBLIC ##############################
 
 /**
- *
- * Authorization
- *
+ * Authorization (based on socket.io's handshake protocol)
  */
 io.configure(function (){
   io.set('authorization', function (handshakeData, callback) {
@@ -43,6 +48,7 @@ io.configure(function (){
 
 /**
  * User Storage
+ *
  * user : {
  *   '1' : [
  *     socket,
@@ -63,8 +69,7 @@ io.sockets.on('connection', function (socket) {
   } else {
   	user[id].push(socket);
   }
-  //console.log('####### CONNECTION #######');
-  //console.log(user);
+
   socket.on('disconnect', function(socket) {
   	if(user[id].length > 1) {
   	  var index = user[id].indexOf(socket);
@@ -72,24 +77,15 @@ io.sockets.on('connection', function (socket) {
   	} else {
   	  delete user[id];
   	}
-  	//console.log('####### DISCONNECT #######');
-    //console.log(user);
   });
 });
 
 
-/**
- * Broadcast
- */
-
-gamboo.broadcast = function(channel, id,  msg) {
-	console.log('broadcasting to user ' + id);
-}
-
-
 // ###################### PRIVATE ##############################
 
-
+/**
+ * API Server
+ */
 
 http.createServer(function(req, res){
 
@@ -109,9 +105,41 @@ http.createServer(function(req, res){
       console.log('##########################################');
       console.log(o);
       console.log('##########################################');
+
+
+      var sent = [];
+      var sent_cnt = 0;
+      var offline = [];
+      var offline_cnt = 0;
+
+      for(var i = 0; i < o.ids.length; i++) {
+        var id = o.ids[i];
+        if(typeof user[id] != 'undefined') {
+          //console.log('Starting Broadcast to #'+ id + typeof user[id]);
+          for(var j = 0; j < user[id].length; j++) {
+            user[id][j].emit(o.channel, o.msg);
+          }
+
+          sent.push(id);
+          sent_cnt++;
+        }else{
+          //console.log('User #' + id + ' seems to be offline.');
+          offline.push(id);
+          offline_cnt++;
+        }
+      }
+
+      res.end( JSON.stringify( {
+        'channel' : o.channel,
+        'msg' : o.msg,
+        'offline' : offline,
+        'sent' : sent,
+        'count' : {
+          'offline' : offline_cnt,
+          'sent' : sent_cnt
+        }
+      }));
     });
-
-
   } else {
   	res.end("{error:'wrong request'}");
   }
