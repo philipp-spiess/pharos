@@ -20,6 +20,7 @@ var qs    = require('querystring');
  * Le wild MongoDB Connect
  */
 var client = new Db('codesup', new Server("127.0.0.1", 27017, {}));
+client.open(function(e){});
 
 
 
@@ -30,18 +31,20 @@ var client = new Db('codesup', new Server("127.0.0.1", 27017, {}));
  */
 io.configure(function (){
   io.set('authorization', function (handshakeData, callback) {
-    db.query("select userID from access_token where access_token = ?",
-	 [handshakeData.query.token], function(err, results, fields) {
-	  if(err) {
-	  	callback(err, false);
-	  } else if(typeof results[0] != 'undefined' && results[0].userID > 0) {
-	  	handshakeData.userID = results[0].userID;
-	  	callback(null, true);
-	  } else {
-	  	callback(null, false);
-	  }
-	  	
-	});
+    client.collection('user', function(e, collection) {
+      collection.findOne( { access_token : handshakeData.query.token } , function(err, result) {
+        console.log(result);
+        if(err) {
+          callback(err, false);
+        } else if(result.rank >= 1) {
+          console.log(result._id);
+          handshakeData.userID = result._id;
+          callback(null, true);
+        } else {
+          callback(null, false);
+        }
+      });
+    });
   });
 });
 
@@ -68,7 +71,7 @@ io.sockets.on('connection', function (socket) {
   } else {
   	user[id].push(socket);
   }
-
+  //console.log(socket);
   socket.on('disconnect', function(socket) {
   	if(user[id].length > 1) {
   	  var index = user[id].indexOf(socket);
@@ -101,9 +104,9 @@ http.createServer(function(req, res){
 
       var o = JSON.parse(body);
 
-      console.log('##########################################');
-      console.log(o);
-      console.log('##########################################');
+      //console.log('##########################################');
+      //console.log(o);
+      //console.log('##########################################');
 
 
       var sent = [];
