@@ -8,19 +8,18 @@ var io = require('socket.io').listen(1337);
 io.enable('browser client minification');
 io.set('resource', '/pharos');
 
-var mysql = require('mysql');
+var mongodb = require('mongodb'), 
+    Db = mongodb.Db,
+    Server = mongodb.Server;
+
 var http  = require('http');
 var qs    = require('querystring');
 
+
 /**
- * DB Connect
+ * Le wild MongoDB Connect
  */
-var db = mysql.createClient({
-  user: 'root',
-  host: 'localhost',
-  password: ''
-});
-db.query('USE gamboo');
+var client = new Db('codesup', new Server("127.0.0.1", 27017, {}));
 
 
 
