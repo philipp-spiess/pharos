@@ -14,10 +14,9 @@
 
 ## Dependency ##
 
-For [Gamboo](http://gamboo.at "Gamboo") we use a local mysql-database which stores the *Auth Token* of every user, therefore you need the following npm packages to start pushing to your users:
+For [CodeSup](http://codesup.com "CodeSup") we use a mongodb backend which stores the *Auth Token* of every user, therefore you need to install the npm dependencies:
 
-    npm install socket.io
-    npm install mysql
+    npm install
 
 **Pharos** needs to be public on port 1337 (this is where socket.io runs on) and can be private on port 7331, this is the port where the API runs on.
 
