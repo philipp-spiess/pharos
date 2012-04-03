@@ -1,4 +1,1 @@
-/node_*
-
-.DS_Store*
-Thumbs.db
+.nodester.appconfig

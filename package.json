@@ -1,17 +1,5 @@
 {
-  "name": "Pharos",
-  "description": "Le wild pushing",
-  "version": "0.2.0",
-  "author": "Philipp Spieß <philipp.spiess@myxcode.at>",
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/gamboo/pharos.git"
-  },
-  "keywords": [
-    "push"
-  ],
-  "dependencies": {
-    "socket.io": ">= 0.0.1",
-    "mongodb": ">= 0.0.1"
-  }
+  "name":"pharos",
+  "node":"0.6.12",
+  "author":"philipp"
 }
