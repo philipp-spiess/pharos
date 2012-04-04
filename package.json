@@ -2,11 +2,18 @@
     "name": "pharos"
   , "version": "0.0.1"
   , "dependencies": {
-      "express": "2.5.8"
-    , "jade": ">= 0.0.1"
-    , "stylus": ">= 0.0.1"
-    , "socket.io": ">= 0.0.1"
-    , "underscore": ">= 0.0.1"
-    , "uglify-js": ">= 0.0.1"
+        "express": "2.5.8"
+      , "jade": ">= 0.0.1"
+      , "stylus": ">= 0.0.1"
+      , "socket.io": ">= 0.0.1"
+      , "underscore": ">= 0.0.1"
+      , "uglify-js": ">= 0.0.1"
+    }
+  , "subdomain": "pharos"
+  , "scripts": {
+        "start": "app.js"
+    }
+  , "engines": {
+        "node": "0.6.x"
   }
 }
