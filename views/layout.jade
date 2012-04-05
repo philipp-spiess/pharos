@@ -1,0 +1,33 @@
+!!! 5
+html
+  head
+    title Pharos
+    link(rel='stylesheet', href='/stylesheets/reset.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Varela+Round')
+    script(src='/pharos.js')
+    script(src='/javascripts/app.js')
+
+  body
+    header
+      ul
+        li.active 
+          a(href='/') Overview
+        li 
+          a(href='/log') Log
+        li 
+          a(href='/emit') Emit
+        li 
+          a(href='/stats') Stats
+        li.info 
+          a(href='/info')
+            span.worker 1
+            |  Worker & 
+            span.sockets 10.000
+            |  Sockets
+
+    #main!= body
+
+    footer 
+      | Fork Pharos on
+      a(href='https://github.com/philipp-spiess/pharos') GitHub
