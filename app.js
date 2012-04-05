@@ -15,15 +15,18 @@ socket.connect(io.listen(app))
 // Configuration
 
 app.configure(function() {
-  app.use(stylus.middleware( {
-      debug: true
-    , src: __dirname + '/public'
-    , dest: __dirname + '/public'
-    , compile: function(str) {
-        return stylus(str)
-          .set('compress', true)
-    }
-  }));
+
+  if(process.env.NODE_ENV != 'production') {
+    app.use(stylus.middleware( {
+        debug: true
+      , src: __dirname + '/public'
+      , dest: __dirname + '/public'
+      , compile: function(str) {
+          return stylus(str)
+            .set('compress', true)
+      }
+    }));
+  }
 
   app.set('views', __dirname + '/views')
   app.set('view engine', 'jade')
