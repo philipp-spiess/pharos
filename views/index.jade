@@ -1,2 +1,25 @@
-h1= title
-p Welcome to #{title}
+div.row
+  div.left
+    h3 Welcome to Pharos
+    p Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+    br
+    h6 Subscribe
+    p Subscribing to a channel is as easy as it is in socket.io itself.
+    pre.prettyprint.linenums
+      | <script src="http://localhost/pharos.min.js"></script>
+      | 
+      | pharos.on('channel', function(msg) {
+      |   console.log(msg)
+      | })
+    br
+    h6 Publish
+    p Publishing can be done via a RESTful API. Check out the docs for clients in different languages.
+    pre.prettyprint.linenums
+      | curl -d "{\\"msg\\":\\"hello world\\"}" http://admin:password@localhost/pub
+  div.right
+    h6 Connected 
+      small (10 Clients)
+    ul
+      li hi
+      li ho
+      li ha

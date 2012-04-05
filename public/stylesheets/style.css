@@ -1,15 +1,10 @@
-html{background:#edefef url("/images/bg.gif");font-family:Arial,Verdana,sans-serif;font-size:13px}
-body{margin:30px;font:14px "Lucida Grande",Helvetica,Arial,sans-serif;text-shadow:0 1px 0 #fff}
+body{background:#edefef url("/images/bg.gif");font-size:13px;text-shadow:0 1px 0 #fff;padding-top:60px}
 header{width:840px;max-width:100%;margin:0 auto;}
-header ul{list-style-type:none;}
-header ul li{display:inline-block;margin-right:10px;}
-header ul li a{display:block;padding:10px 30px;background:rgba(0,0,0,0.05);border-top-left-radius:2px;border-top-right-radius:2px;color:#666;box-shadow:inset 0 1px 1px rgba(0,0,0,0.03);text-decoration:none;}
-header ul li a:hover{background:rgba(0,0,0,0.07)}
-header ul li.active a{background:url("/images/bg-main.gif");color:#444}
-header ul li.info{float:right;margin-right:0;}
-header ul li.info a{border-radius:2px;color:#888;background:url("/images/bg-main.gif");padding:7px 15px}
-#main{background:url("/images/bg-main.gif");border-radius:2px;min-height:400px;padding:20px;width:800px;max-width:100%;margin:0 auto;}
-#main h1{margin:10px 0;font-size:180%;font-weight:bold;color:#345a67}
-#main h2{margin:10px 0;font-size:130%}
+header .nav{margin-bottom:0;}
+header .nav .info{float:right;}
+header .nav .info a{color:#999;font-size:90%;margin-right:0;padding-right:0}
+#main{background:#fff;border:1px solid #ddd;border-top:0;min-height:400px;padding:19px;width:800px;max-width:100%;margin:0 auto;}
+#main .left{width:560px;float:left;margin-left:20px}
+#main .right{width:220px;float:left;margin-left:20px}
 footer{text-align:center;font-size:85%;margin:10px;color:#999;}
 footer a{color:#345a67;text-decoration:none}

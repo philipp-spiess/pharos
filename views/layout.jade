@@ -2,19 +2,23 @@
 html
   head
     title Pharos
-    link(rel='stylesheet', href='/stylesheets/reset.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Varela+Round')
+    link(rel='stylesheet', href='/stylesheets/prettify.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
     script(src='/pharos.js')
+    script(src='/javascripts/prettify/prettify.js')
     script(src='/javascripts/app.js')
 
   body
     header
-      ul
+      ul.nav.nav-tabs
         li.active 
           a(href='/') Overview
         li 
           a(href='/log') Log
+        li 
+          a(href='/connected') Connected
         li 
           a(href='/emit') Emit
         li 
@@ -31,3 +35,10 @@ html
     footer 
       | Fork Pharos on
       a(href='https://github.com/philipp-spiess/pharos') GitHub
+      | .
+      br 
+      | Powered by
+      a(href='http://socket.io') socket.io
+      |  and 
+      a(href='http://redis.io') redis
+      | .

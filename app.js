@@ -8,6 +8,17 @@ var express = require('express')
   , socket = require('./lib/socket.io')
   , _ = require('underscore')
 
+
+/** 
+ * Checking before starting up
+ **/
+
+if(typeof process.env.PHAROS_PASSWORD == 'undefined') {
+  console.log('[Pharos] No secret found. Please set PHAROS_PASSWORD.')
+  process.exit(1)
+}
+
+
 var app = module.exports = express.createServer()
 
 socket.connect(io.listen(app))
@@ -46,10 +57,12 @@ app.configure('production', function() {
 });
 
 // Routes
-var r = require('./routes/index.js')
-console.log(r)
-app.get('/', require('./routes/index'))
-app.get('/pharos(.min)?.js', require('./routes/pharos.js'))
+app.get('/',                  require('./routes/index'))
+app.get('/log',               require('./routes/log'))
+app.get('/pharos(.min)?.js',  require('./routes/pharos.js'))
+
+
+
 
 app.listen(80, function() {
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env)
