@@ -15,7 +15,7 @@ var express = require('express')
 
 if(typeof process.env.PHAROS_PASSWORD == 'undefined') {
   console.log('[Pharos] No secret found. Please set PHAROS_PASSWORD.')
-  process.exit(1)
+  process.env.PHAROS_PASSWORD = 'test'
 }
 
 var app = express.createServer()
