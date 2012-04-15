@@ -12,32 +12,33 @@ html
 
   body
     header
-      ul.nav.nav-tabs
-        li.active 
-          a(href='/') Overview
-        li 
-          a(href='/log') Log
-        li 
-          a(href='/connected') Connected
-        li 
-          a(href='/emit') Emit
-        li 
-          a(href='/stats') Stats
-        li.info 
-          a(href='/info')
-            span.worker 1
-            |  Worker & 
-            span.sockets 10.000
-            |  Sockets
+      div.top
+        hgroup.container
+          h1 Pharos
+          h2 the awesome headline
+      nav
+        ul.container
+          li.active 
+            a(href='/') Overview
+          li 
+            a(href='/log') Log
+          li 
+            a(href='/connected') Connected
+          li 
+            a(href='/emit') Emit
+          li 
+            a(href='/stats') Stats
 
-    #main!= body
+    #main.container
+      div.row
+        div.span9!= body
+        div.span3
+          h1 Sidebar
 
     footer 
       | Fork Pharos on
       a(href='https://github.com/philipp-spiess/pharos') GitHub
-      | .
-      br 
-      | Powered by
+      | . Powered by
       a(href='http://socket.io') socket.io
       |  and 
       a(href='http://redis.io') redis

@@ -1,10 +1,17 @@
-body{background:#edefef url("/images/bg.gif");font-size:13px;text-shadow:0 1px 0 #fff;padding-top:60px}
-header{width:840px;max-width:100%;margin:0 auto;}
-header .nav{margin-bottom:0;}
-header .nav .info{float:right;}
-header .nav .info a{color:#999;font-size:90%;margin-right:0;padding-right:0}
-#main{background:#fff;border:1px solid #ddd;border-top:0;min-height:400px;padding:19px;width:800px;max-width:100%;margin:0 auto;}
-#main .left{width:560px;float:left;margin-left:20px}
-#main .right{width:220px;float:left;margin-left:20px}
+body{background:#fff;font-size:13px;text-shadow:0 1px 0 #fff}
+header{width:100%;height:85px;margin:0;}
+header div.top{background:#393939;height:41px;border-bottom:2px solid #cbcbcb;}
+header div.top h1,header div.top h2{font-size:14px;line-height:41px;color:#fff;text-shadow:0 1px 0 #000;display:inline-block}
+header div.top h2{font-weight:normal;margin-left:6px}
+header nav{margin-left:-10px;height:41px;background:#f7f7f7;border-bottom:1px solid #e5e5e5;}
+header nav ul{list-style-type:none;}
+header nav ul li{display:inline-block;height:41px;padding:0 5px;margin-right:20px;}
+header nav ul li a{line-height:38px;color:#67686d;font-weight:bold;}
+header nav ul li a:hover{color:#070000;text-decoration:none}
+header nav ul li.active{height:38px;border-bottom:3px solid #dedede;}
+header nav ul li.active a{color:#070000}
+#main{margin-top:20px;}
+#main h1{font-size:13px;width:100%;border-bottom:1px solid #e5e5e5;line-height:20px;margin-bottom:20px;color:#2b3632}
 footer{text-align:center;font-size:85%;margin:10px;color:#999;}
-footer a{color:#345a67;text-decoration:none}
+footer a{color:#67686d;text-decoration:underline;}
+footer a:hover{color:#070000}
