@@ -26,4 +26,3 @@ describe 'app', ->
       .end (res, body) ->
         res.statusCode.should.equal 200
         done()
-      
