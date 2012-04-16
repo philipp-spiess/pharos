@@ -4,10 +4,6 @@ assert = require('assert')
 request = require('./support/http')
 
 describe 'app', ->
-  it 'should inherit from event emitter', (done) ->
-    pharos.on 'foo', done
-    pharos.emit 'foo'
-
   it 'should require authentification', (done) ->
     request(pharos)
       .get('/')
