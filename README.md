@@ -1,4 +1,5 @@
 # Pharos #
+[![Build Status](https://secure.travis-ci.org/philipp-spiess/pharos.png?branch=master)](http://travis-ci.org/philipp-spiess/pharos)
 
 Pharos is a real-time pushing alternative to [Pusher](http://pusher.com/) which is easy to deploy on [dotCloud](https://www.dotcloud.com/) for free (I usually prefer Heroku, but having no WebSocket support sucks).
 
