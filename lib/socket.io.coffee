@@ -2,10 +2,12 @@
   Socket IO Library
 ###
 
+Redis = require('./redis').Redis
 _ = require 'underscore'
-user = {}
 
+module.exports.user = user = {}
 module.exports.connect = (io) ->
+  Redis.getInstance()
   io.sockets.on 'connection', (socket) ->
     id = socket.handshake.id
 
@@ -28,7 +30,8 @@ module.exports.connect = (io) ->
       strategy.auth data, callback
 
 module.exports.broadcast = (channel, message) ->
-  socket.emit channel, message for socket in u for u in user
+  _.each user, (u) ->
+    socket.emit channel, message for socket in u
 
 module.exports.push = (channel, to, message) ->
   for id in to

@@ -6,4 +6,4 @@ auth = require('../lib/auth/server')
 
 module.exports = (req, res) ->
 	auth req, res, ->
-		res.send '):'
+    res.render 'log', token: 'lol'

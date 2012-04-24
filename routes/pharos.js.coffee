@@ -11,8 +11,6 @@ cache = {}
 module.exports = (req, res) ->
   res.header "Content-Type", "application/javascript"
 
-
-
   # Cache to minimize I/O
   unless cache.socket_io? or cache.pharos?
     # Load the fucking files babe!
@@ -20,9 +18,8 @@ module.exports = (req, res) ->
     cache.pharos = fs.readFileSync( pharos_client ).toString()
 
   # Prepare the options
-  opt = {
-    base_url: process.env.PHAROS_BASE_URL,
+  opt =
+    base_url: process.env.PHAROS_BASE_URL
     token: req.query?.token
-  }
 
   res.send cache.socket_io + coffee.compile( cache.pharos.replace(':opt', JSON.stringify ( opt ) ) )

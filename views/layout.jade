@@ -8,6 +8,7 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
     script(src='/pharos.js?token=#{token}')
     script(src='/javascripts/prettify/prettify.js')
+    script(src='/javascripts/jquery.relatize_date.js')
     script(src='/javascripts/app.js')
 
   body
@@ -15,7 +16,7 @@ html
       div.top
         hgroup.container
           h1 Pharos
-          h2 the awesome headline
+          h2 push and tracking engine
       nav
         ul.container
           li.active 
@@ -25,15 +26,25 @@ html
           li 
             a(href='/connected') Connected
           li 
-            a(href='/emit') Emit
-          li 
-            a(href='/stats') Stats
+            a(href='/push') Push
 
     #main.container
       div.row
-        div.span9!= body
-        div.span3
+        div.span9.content!= body
+        div.span3.sidebar
           h1 Sidebar
+          h2 Stats
+          table.table.table-condensed.table-bordered
+            tbody
+              tr
+                td Pushed
+                td.pushed loading...
+              tr
+                td User
+                td.user loading...
+              tr
+                td Sockets
+                td.sockets loading...
 
     footer 
       | Fork Pharos on
@@ -43,3 +54,5 @@ html
       |  and 
       a(href='http://redis.io') redis
       | .
+      br
+      img(src='https://secure.travis-ci.org/philipp-spiess/pharos.png?branch=master')

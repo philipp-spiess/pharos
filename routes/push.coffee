@@ -3,7 +3,7 @@
 ###
 
 auth = require '../lib/auth/server'
-io = require '../lib/socket.io'
+Controller = require('../lib/controller').Controller
 
 module.exports = (req, res) ->
   auth req, res, ->
@@ -16,10 +16,10 @@ module.exports = (req, res) ->
     try
       message = JSON.parse message
 
-    request = {
-      channel: channel,
+    request = 
+      channel: channel
       message: message
-    }
+      date:    new Date
         
     if req.body.to?
       if typeof req.body.to == 'string'
@@ -32,5 +32,5 @@ module.exports = (req, res) ->
         
     res.send JSON.stringify request
 
-    if request.to?
-      io.push request.channel, request.to, request.message
+
+    Controller.push request

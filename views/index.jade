@@ -16,11 +16,14 @@ h6 Publish
 p Publishing can be done via a RESTful API. Check out the docs for clients in different languages.
 pre.prettyprint.linenums
   | # Push an object to a single user.
-  | curl -d "to=1&message={\\"foo\\":\\"bar\\"}" http://:PASSWORD@example.com/push/CHANNEL
+  | curl -d "to=1&message={\\"foo\\":\\"bar\\"}" \\
+  |      http://:PASSWORD@example.com/push/CHANNEL
   | # Push an object to multiple users.
-  | curl -d "to[]=1&to[]=2&message={\\"foo\\":\\"bar\\"}" http://:PASSWORD@example.com/push/CHANNEL
+  | curl -d "to[]=1&to[]=2&message={\\"foo\\":\\"bar\\"}" \\
+  |      http://:PASSWORD@example.com/push/CHANNEL
   | # Broadcast some JavaScript to get evaluated.
-  | curl -d "message=alert('Hello World');" http://:PASSWORD@example.com/push/CHANNEL
+  | curl -d "message=alert('Hello World');" \\
+  |      http://:PASSWORD@example.com/push/CHANNEL
 p
   strong Notice:
   |  You don't need to set an HTTP username. The password alone will do the trick.

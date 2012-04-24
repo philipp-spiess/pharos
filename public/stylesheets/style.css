@@ -12,6 +12,11 @@ header nav ul li.active{height:38px;border-bottom:3px solid #dedede;}
 header nav ul li.active a{color:#070000}
 #main{margin-top:20px;}
 #main h1{font-size:13px;width:100%;border-bottom:1px solid #e5e5e5;line-height:20px;margin-bottom:20px;color:#2b3632}
-footer{text-align:center;font-size:85%;margin:10px;color:#999;}
+#main h2{font-size:12px;line-height:20px;color:#2b3632}
+#main .content .table .loading td{text-align:center}
+#main .content .table pre{width:100%;font-size:11px;margin:0;padding:0;border:0;background:transparent !important}
+#main .sidebar .table td{width:50%}
+#main .sidebar .table .pushed,#main .sidebar .table .user,#main .sidebar .table .sockets{text-align:right}
+footer{text-align:center;font-size:85%;margin:20px;color:#999;}
 footer a{color:#67686d;text-decoration:underline;}
 footer a:hover{color:#070000}
