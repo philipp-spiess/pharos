@@ -11,6 +11,7 @@ header nav ul li a:hover{color:#070000;text-decoration:none}
 header nav ul li.active{height:38px;border-bottom:3px solid #dedede;}
 header nav ul li.active a{color:#070000}
 #main{margin-top:20px;}
+#main .avatar{width:20px;height:20px;display:inline-block;border-radius:10px;line-height:30px;margin-right:10px;box-shadow:0 1px 0 #fff}
 #main h1{font-size:13px;width:100%;border-bottom:1px solid #e5e5e5;line-height:20px;margin-bottom:20px;color:#2b3632}
 #main h2{font-size:12px;line-height:20px;color:#2b3632}
 #main .content .table .loading td{text-align:center}

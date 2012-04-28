@@ -6,7 +6,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/prettify.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
-    script(src='/pharos.js?token=#{token}')
+    script(src='/pharos.js?token=pharos:#{process.env.PHAROS_PASSWORD}')
     script(src='/javascripts/prettify/prettify.js')
     script(src='/javascripts/jquery.relatize_date.js')
     script(src='/javascripts/app.js')
@@ -19,14 +19,33 @@ html
           h2 push and tracking engine
       nav
         ul.container
-          li.active 
-            a(href='/') Overview
-          li 
-            a(href='/log') Log
-          li 
-            a(href='/connected') Connected
-          li 
-            a(href='/push') Push
+          - if (typeof(page) != 'undefined' && page == 'index')
+            li.active 
+              a(href='/') Overview
+          - else
+            li 
+              a(href='/') Overview
+
+          - if (typeof(page) != 'undefined' && page == 'log')
+            li.active 
+              a(href='/log') Log
+          - else
+            li 
+              a(href='/log') Log          
+
+          - if (typeof(page) != 'undefined' && page == 'user')
+            li.active 
+              a(href='/user') User
+          - else
+            li 
+              a(href='/user') User
+
+          //- if (typeof(page) != 'undefined' && page == 'push')
+          //  li.active 
+          //    a(href='/push') Push
+          //- else
+          //  li 
+          //    a(href='/push') Push
 
     #main.container
       div.row

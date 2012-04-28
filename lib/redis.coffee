@@ -18,6 +18,7 @@ class Redis
 
     err = (err) ->
       console.log '[Redis] Error: ' + err
+      
     @client.on 'error', err
     @sub.on 'error', err
 

@@ -1,5 +1,5 @@
 ( (opt) ->
-  console.log opt
+  # console.log opt
 
   @pharos = {}
   pharos.io = io.connect opt.base_url + '?token=' + opt.token

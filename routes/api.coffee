@@ -22,7 +22,10 @@ module.exports = (req, res) ->
         user.push
           id:      id
           name:    u[0].handshake.name
+          avatar:  u[0].handshake.avatar
           sockets: u.length
+      if id?
+        user = _.first user, id
       res.send JSON.stringify user
 
     else if what is 'log'
@@ -42,8 +45,10 @@ module.exports = (req, res) ->
         sockets += u.length
 
       redis.client.get 'pharos:push:cnt', (err, cnt) ->
+        unless cnt?
+          cnt = 0
         stats =
-          pushed  : parseInt cnt
+          pushed  : parseInt(cnt)
           user    : user
           sockets : sockets
 

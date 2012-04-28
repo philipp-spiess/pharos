@@ -22,4 +22,5 @@ module.exports = (req, res) ->
     base_url: process.env.PHAROS_BASE_URL
     token: req.query?.token
 
+  # @todo use uglifyjs
   res.send cache.socket_io + coffee.compile( cache.pharos.replace(':opt', JSON.stringify ( opt ) ) )

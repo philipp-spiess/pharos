@@ -1,6 +1,6 @@
 {
   "name": "pharos",
-  "version": "0.0.1-4",
+  "version": "0.0.3",
   "dependencies": {
     "express": "2.5.8",
     "jade": ">= 0.0.1",
@@ -10,7 +10,8 @@
     "uglify-js": ">= 0.0.1",
     "coffee-script": ">= 0.0.1",
     "request": ">= 0.0.1",
-    "redis": ">= 0.0.1"
+    "redis": ">= 0.0.1",
+    "mongodb" : ">= 0.0.1"
   },
   "devDependencies": {
     "mocha": "*",
