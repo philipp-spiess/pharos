@@ -1,6 +1,6 @@
 {
   "name": "pharos",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "express": "2.5.8",
     "jade": ">= 0.0.1",
@@ -11,7 +11,7 @@
     "coffee-script": ">= 0.0.1",
     "request": ">= 0.0.1",
     "redis": ">= 0.0.1",
-    "mongodb" : ">= 0.0.1"
+    "mongodb": ">= 0.0.1"
   },
   "devDependencies": {
     "mocha": "*",
@@ -19,10 +19,8 @@
   },
   "subdomain": "pharos",
   "scripts": {
-    "start": "app.js"
-  },
-  "scripts": {
-    "test": "mocha --compilers coffee:coffee-script"
+    "test": "mocha --compilers coffee:coffee-script",
+    "start": "index.js"
   },
   "engines": {
     "node": "0.6.x"

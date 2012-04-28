@@ -1,8 +1,12 @@
 ###
   A little helper for redis ;) 
+
+  Used env vars
+  PHAROS_REDIS_URL
 ###
 
 redis = require 'redis'
+url   = require 'url'
 
 class Redis
   # A tiny Singelton wrapper
@@ -12,15 +16,24 @@ class Redis
     @instance
 
   constructor: ->
-    # One client who can push and one to simply subscribe :)
-    @client = redis.createClient()
-    @sub = redis.createClient()
+    rtg = url.parse(process.env.PHAROS_REDIS_URL)
 
-    err = (err) ->
-      console.log '[Redis] Error: ' + err
-      
-    @client.on 'error', err
-    @sub.on 'error', err
+    # One client who can push and one to simply subscribe :)
+    @client = redis.createClient rtg.port, rtg.hostname
+    @sub    = redis.createClient rtg.port, rtg.hostname
+
+    @client.auth rtg.auth.split(":")[1]
+    @sub.auth rtg.auth.split(":")[1]
+
+    @client.on 'error', (err) =>
+      console.log '[Redis][Client] Error: ' + err
+ 
+ 
+    @sub.on 'error', (err) =>
+      console.log '[Redis][Sub] Error: ' + err
+
+
+
 
   # Log em!
   log: (type, json) ->
