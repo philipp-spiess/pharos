@@ -22,8 +22,9 @@ class Redis
     @client = redis.createClient rtg.port, rtg.hostname
     @sub    = redis.createClient rtg.port, rtg.hostname
 
-    @client.auth rtg.auth.split(":")[1]
-    @sub.auth rtg.auth.split(":")[1]
+    if rtg.auth?
+      @client.auth rtg.auth.split(":")[1]
+      @sub.auth rtg.auth.split(":")[1]
 
     @client.on 'error', (err) =>
       console.log '[Redis][Client] Error: ' + err
