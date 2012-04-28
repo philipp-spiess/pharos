@@ -7,7 +7,7 @@ Controller = require('./lib/controller').Controller
 
 unless process.env.PHAROS_PASSWORD?
   util.puts 'No secret found. Please set PHAROS_PASSWORD.'
-  process.env.PHAROS_PASSWORD = 'test'
+  process.exit 1
 
 # Create server and connect to socket.io
 app = express.createServer()
