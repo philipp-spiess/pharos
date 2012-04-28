@@ -16,13 +16,12 @@ socket.connect io.listen(app)
 # Config
 app.configure ->
   if process.env.NODE_ENV isnt 'production'
-    app.use stylus.middleware( {
-        debug: true
-      , src: __dirname + '/public'
-      , dest: __dirname + '/public'
-      , compile: (str) ->
-          stylus(str).set('compress', true)
-    })
+    app.use stylus.middleware
+      debug: true
+      src: __dirname + '/public'
+      dest: __dirname + '/public'
+      compile: (str) ->
+        stylus(str).set 'compress', true
   
   app.set 'views', __dirname + '/views'
   app.set 'view engine', 'jade'
@@ -32,7 +31,9 @@ app.configure ->
   app.use express.static(__dirname + '/public')
 
 app.configure 'development', ->
-  app.use express.errorHandler({ dumpExceptions: true, showStack: true })
+  app.use express.errorHandler
+    dumpExceptions: true,
+    showStack: true
 
 app.configure 'production', ->
   app.use express.errorHandler()
