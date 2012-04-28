@@ -48,7 +48,8 @@ app.get  '/api/:what/:id?',   require ('./routes/api')
 app.listen process.env.PORT ?= 3000, ->
   console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
 
-module.exports = app
+if process.env.PHAROS_PASSWORD?
+  # Start working fucker.
+  Controller.work()
 
-# Start working fucker.
-Controller.work()
+module.exports = app
