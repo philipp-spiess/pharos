@@ -1,6 +1,6 @@
 {
   "name": "pharos",
-  "version": "0.0.4",
+  "version": "0.0.4-2",
   "dependencies": {
     "express": "2.5.8",
     "jade": ">= 0.0.1",

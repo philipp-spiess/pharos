@@ -5,9 +5,21 @@ io = require('socket.io')
 socket = require('./lib/socket.io')
 Controller = require('./lib/controller').Controller
 
+# Check the dependencies 
+
 unless process.env.PHAROS_PASSWORD?
   util.puts 'No secret found. Please set PHAROS_PASSWORD.'
   process.exit 1
+
+unless process.env.PHAROS_REDIS_URL?
+  util.puts 'No redis found. Please set PHAROS_REDIS_URL.'
+  process.exit 1
+
+unless process.env.PHAROS_AUTH_STRATEGY?
+  util.puts 'No auth stragety found. Plesase set PHAROS_AUTH_STRATEGY.'
+  process.exit 1
+
+
 
 # Create server and connect to socket.io
 app = express.createServer()
@@ -49,8 +61,6 @@ app.get  '/api/:what/:id?',   require ('./routes/api')
 app.listen process.env.PORT ?= 3000, ->
   console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
 
-if process.env.PHAROS_PASSWORD?
-  # Start working
-  Controller.work()
+Controller.work()
 
 module.exports = app
