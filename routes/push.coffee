@@ -22,8 +22,8 @@ module.exports = (req, res) ->
       date:    new Date
         
     if req.body.to?
-      if typeof req.body.to == 'string'
-        req.body.to = [ req.body.to ]
+      if typeof req.body.to == 'string' or typeof req.body.to == 'number'
+        req.body.to = [ req.body.to + '' ]
 
       request.type = 'PUSH'
       request.to = req.body.to
