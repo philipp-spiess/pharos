@@ -50,6 +50,8 @@ module.exports.snitch = snitch = (message) ->
   _.defer ->
     _.each admins, (socket) ->
       socket.emit 'snitch', message
+    _.each admins, (socket) ->
+      socket.emit message.channel, message.message
 
 module.exports.broadcast = (channel, message) ->
   _.each user, (u) ->
